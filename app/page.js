@@ -81,7 +81,7 @@ export default function Home() {
       const res = await fetch("/api/translate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: input, mode, country }),
+        body: JSON.stringify({ text: input, mode, country: mode === "toLinkedIn" ? null : country }),
       });
       const data = await res.json();
       setOutput(data.error || data.result);
